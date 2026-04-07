@@ -71,7 +71,7 @@ body{
 
 /* BUTTONS */
 .btn-solid{
-  display:inline-flex;align-items:center;gap:8px;
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
   background:var(--ink);color:var(--canvas);
   border:1.5px solid var(--ink);border-radius:var(--r-sm);
   padding:13px 28px;font-family:'Jost',sans-serif;font-size:13px;
@@ -81,7 +81,7 @@ body{
 .btn-solid:hover{opacity:.82;transform:translateY(-1px);}
 
 .btn-ghost{
-  display:inline-flex;align-items:center;gap:8px;
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
   background:transparent;color:var(--ink);
   border:1.5px solid var(--line);border-radius:var(--r-sm);
   padding:13px 28px;font-family:'Jost',sans-serif;font-size:13px;
@@ -190,6 +190,96 @@ body{
   justify-content:center;font-size:14px;flex-shrink:0;
   background:var(--canvas2);
 }
+
+/* ── HAMBURGER MENU ── */
+.hamburger{
+  display:none;flex-direction:column;justify-content:center;
+  gap:5px;background:transparent;border:1px solid var(--line);
+  border-radius:var(--r-sm);padding:8px 10px;cursor:pointer;
+  transition:border-color .18s,background .18s;
+}
+.hamburger:hover{border-color:var(--ink4);background:var(--canvas2);}
+.hamburger span{
+  display:block;width:18px;height:1.5px;
+  background:var(--ink2);transition:all .25s;
+}
+
+/* Mobile drawer */
+.mobile-menu{
+  display:none;position:fixed;top:62px;left:0;right:0;
+  background:var(--nav-bg);backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--line);z-index:998;
+  flex-direction:column;padding:12px 20px 20px;gap:4px;
+}
+.mobile-menu.open{display:flex;}
+.mobile-menu .nav-item{text-align:left;padding:10px 12px;font-size:14px;}
+
+/* ── RESPONSIVE: TABLET (≤768px) ── */
+@media(max-width:768px){
+
+  /* Nav */
+  .nav-links{display:none !important;}
+  .hamburger{display:flex !important;}
+  nav{padding:0 20px !important;}
+
+  /* Wrapper */
+  .wrap{padding:0 20px !important;}
+
+  /* Hero */
+  .hero-section{padding:100px 20px 60px !important;}
+  .hero-stats{
+    flex-direction:column !important;
+    border-top:1px solid var(--line);
+    padding-top:32px !important;
+  }
+  .hero-stat{
+    border-right:none !important;
+    border-bottom:1px solid var(--line) !important;
+    padding:14px 0 !important;
+    width:100% !important;
+  }
+  .hero-stat:last-child{border-bottom:none !important;}
+
+  /* About: single column */
+  .about-grid{grid-template-columns:1fr !important;gap:56px !important;}
+  .about-float{bottom:-14px !important;right:0 !important;}
+
+  /* Products: 2 cols */
+  .products-grid{grid-template-columns:repeat(2,1fr) !important;}
+
+  /* Gallery: single big card only */
+  .gallery-grid{grid-template-columns:1fr !important;}
+  .gallery-grid > *:nth-child(2),
+  .gallery-grid > *:nth-child(3){display:none !important;}
+
+  /* Contact: single column */
+  .contact-grid{grid-template-columns:1fr !important;gap:24px !important;}
+
+  /* Section padding */
+  .sec{padding:60px 0 !important;}
+
+  /* Footer */
+  footer{padding:40px 20px 28px !important;}
+}
+
+/* ── RESPONSIVE: MOBILE (≤480px) ── */
+@media(max-width:480px){
+
+  .wrap{padding:0 16px !important;}
+
+  /* Hero */
+  .hero-section{padding:90px 16px 50px !important;}
+  .hero-btns{flex-direction:column !important;width:100% !important;}
+  .hero-btns .btn-solid,
+  .hero-btns .btn-ghost{width:100% !important;}
+
+  /* Products: 1 col */
+  .products-grid{grid-template-columns:1fr !important;}
+
+  /* Sticky CTAs: icon only on very small screens */
+  .cta-label{display:none !important;}
+  .s-call,.s-wa{padding:11px 14px !important;}
+}
 `;
 
 const PRODUCTS = [
@@ -211,9 +301,10 @@ const GALLERY = [
 const NAV = ["Home","About","Products","Gallery","Contact"];
 
 export default function AptechElectronics() {
-  const [scrolled, setScrolled] = useState(false);
-  const [slide,    setSlide   ] = useState(0);
-  const [dark,     setDark    ] = useState(false);
+  const [scrolled,   setScrolled  ] = useState(false);
+  const [slide,      setSlide     ] = useState(0);
+  const [dark,       setDark      ] = useState(false);
+  const [menuOpen,   setMenuOpen  ] = useState(false);
 
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 40);
@@ -225,9 +316,15 @@ export default function AptechElectronics() {
     document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
   }, [dark]);
 
-  const go = id => document.getElementById(id)?.scrollIntoView({ behavior:"smooth" });
-  const W  = ({ children, style={} }) => (
-    <div style={{ maxWidth:1080, margin:"0 auto", padding:"0 40px", ...style }}>{children}</div>
+  const go = id => {
+    document.getElementById(id)?.scrollIntoView({ behavior:"smooth" });
+    setMenuOpen(false);
+  };
+
+  const W = ({ children, style={} }) => (
+    <div className="wrap" style={{ maxWidth:1080, margin:"0 auto", padding:"0 40px", ...style }}>
+      {children}
+    </div>
   );
 
   return (
@@ -239,9 +336,9 @@ export default function AptechElectronics() {
         position:"fixed", top:0, left:0, right:0, zIndex:999,
         height:62, display:"flex", alignItems:"center",
         justifyContent:"space-between", padding:"0 40px",
-        background: scrolled ? "var(--nav-bg)" : "transparent",
-        backdropFilter: scrolled ? "blur(16px)" : "none",
-        borderBottom: scrolled ? "1px solid var(--line)" : "none",
+        background: scrolled || menuOpen ? "var(--nav-bg)" : "transparent",
+        backdropFilter: scrolled || menuOpen ? "blur(16px)" : "none",
+        borderBottom: scrolled || menuOpen ? "1px solid var(--line)" : "none",
         transition:"all .3s",
       }}>
         {/* Logo */}
@@ -253,28 +350,40 @@ export default function AptechElectronics() {
           </div>
         </div>
 
-        {/* Links */}
-        <div style={{ display:"flex", gap:0 }}>
+        {/* Desktop Links */}
+        <div className="nav-links" style={{ display:"flex", gap:0 }}>
           {NAV.map(n => <button key={n} className="nav-item" onClick={()=>go(n.toLowerCase())}>{n}</button>)}
         </div>
 
-        {/* Dark mode toggle */}
-        <button className="icon-btn" onClick={()=>setDark(d=>!d)} title="Toggle dark mode">
-          {dark ? "☀️" : "🌙"}
-          <span style={{ fontFamily:"'Jost',sans-serif", fontSize:12, fontWeight:500 }}>
-            {dark ? "Light" : "Dark"}
-          </span>
-        </button>
+        {/* Right controls */}
+        <div style={{ display:"flex", alignItems:"center", gap:8 }}>
+          <button className="icon-btn" onClick={()=>setDark(d=>!d)} title="Toggle dark mode">
+            {dark ? "☀️" : "🌙"}
+            <span style={{ fontFamily:"'Jost',sans-serif", fontSize:12, fontWeight:500 }}>
+              {dark ? "Light" : "Dark"}
+            </span>
+          </button>
+          {/* Hamburger — visible only on mobile via CSS */}
+          <button className="hamburger" onClick={()=>setMenuOpen(m=>!m)} aria-label="Menu">
+            <span style={{ transform: menuOpen ? "rotate(45deg) translate(4px,4px)" : "none" }} />
+            <span style={{ opacity: menuOpen ? 0 : 1 }} />
+            <span style={{ transform: menuOpen ? "rotate(-45deg) translate(4px,-4px)" : "none" }} />
+          </button>
+        </div>
       </nav>
 
+      {/* Mobile drawer */}
+      <div className={`mobile-menu${menuOpen?" open":""}`}>
+        {NAV.map(n => <button key={n} className="nav-item" onClick={()=>go(n.toLowerCase())}>{n}</button>)}
+      </div>
+
       {/* ── HERO ── */}
-      <section id="home" style={{
+      <section id="home" className="hero-section" style={{
         background:"var(--canvas)", minHeight:"100vh",
         display:"flex", flexDirection:"column", alignItems:"center",
         justifyContent:"center", padding:"120px 40px 80px",
         textAlign:"center", position:"relative", overflow:"hidden",
       }}>
-        {/* Subtle grid */}
         <div style={{
           position:"absolute", inset:0,
           backgroundImage:"linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px)",
@@ -288,7 +397,7 @@ export default function AptechElectronics() {
           <span style={{ fontFamily:"'Jost',sans-serif", fontSize:11, fontWeight:600, letterSpacing:".1em", textTransform:"uppercase", color:"var(--ink2)" }}>Areacode, Malappuram</span>
         </div>
 
-        <h1 className="disp fu1" style={{ fontSize:"clamp(3rem,6.5vw,5.5rem)", maxWidth:760, marginBottom:24 }}>
+        <h1 className="disp fu1" style={{ fontSize:"clamp(2.4rem,6.5vw,5.5rem)", maxWidth:760, marginBottom:24 }}>
           The Electronics Store<br />Your Neighborhood Deserves
         </h1>
 
@@ -296,20 +405,20 @@ export default function AptechElectronics() {
           Quality smartphones, TVs, laptops, and home appliances — with honest pricing and genuine after-sales care since 2009.
         </p>
 
-        <div className="fu3" style={{ display:"flex", gap:12, flexWrap:"wrap", justifyContent:"center", marginBottom:80 }}>
+        <div className="fu3 hero-btns" style={{ display:"flex", gap:12, flexWrap:"wrap", justifyContent:"center", marginBottom:80 }}>
           <button className="btn-solid" onClick={()=>go("products")}>Shop Our Range</button>
           <button className="btn-ghost" onClick={()=>go("contact")}>Find the Store</button>
         </div>
 
         {/* Stats row */}
-        <div className="fu3" style={{ display:"flex", borderTop:"1px solid var(--line)", paddingTop:40, gap:0, flexWrap:"wrap", justifyContent:"center" }}>
+        <div className="fu3 hero-stats" style={{ display:"flex", borderTop:"1px solid var(--line)", paddingTop:40, gap:0, flexWrap:"wrap", justifyContent:"center", width:"100%" }}>
           {[
             ["15+","Years in Business"],
             ["5,000+","Happy Customers"],
             ["500+","Products Stocked"],
             ["10 AM – 9 PM","Open Every Day"],
           ].map(([n,l],i,a)=>(
-            <div key={l} style={{ padding:"0 40px", textAlign:"center", borderRight: i<a.length-1 ? "1px solid var(--line)" : "none" }}>
+            <div key={l} className="hero-stat" style={{ padding:"0 40px", textAlign:"center", borderRight: i<a.length-1 ? "1px solid var(--line)" : "none" }}>
               <div style={{ fontFamily:"'Cormorant Garamond',serif", fontWeight:600, fontSize:30, color:"var(--ink)", letterSpacing:"-.01em" }}>{n}</div>
               <div style={{ fontFamily:"'Jost',sans-serif", fontSize:11, fontWeight:500, letterSpacing:".08em", textTransform:"uppercase", color:"var(--ink3)", marginTop:4 }}>{l}</div>
             </div>
@@ -318,9 +427,9 @@ export default function AptechElectronics() {
       </section>
 
       {/* ── ABOUT ── */}
-      <section id="about" style={{ background:"var(--white)", borderTop:"1px solid var(--line)", padding:"100px 0" }}>
+      <section id="about" className="sec" style={{ background:"var(--white)", borderTop:"1px solid var(--line)", padding:"100px 0" }}>
         <W>
-          <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:80, alignItems:"center" }}>
+          <div className="about-grid" style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:80, alignItems:"center" }}>
             {/* Image area */}
             <div style={{ position:"relative" }}>
               <div style={{ borderRadius:"16px", background:"var(--canvas2)", border:"1px solid var(--line)", aspectRatio:"4/3", display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center", overflow:"hidden" }}>
@@ -331,7 +440,7 @@ export default function AptechElectronics() {
                 </div>
               </div>
               {/* Floating tag */}
-              <div style={{ position:"absolute", bottom:-18, right:-18, background:"var(--card-bg)", border:"1px solid var(--line)", borderRadius:"10px", padding:"12px 20px", boxShadow:"0 8px 32px var(--shadow)" }}>
+              <div className="about-float" style={{ position:"absolute", bottom:-18, right:-18, background:"var(--card-bg)", border:"1px solid var(--line)", borderRadius:"10px", padding:"12px 20px", boxShadow:"0 8px 32px var(--shadow)" }}>
                 <div style={{ fontFamily:"'Jost',sans-serif", fontSize:11, fontWeight:600, letterSpacing:".1em", textTransform:"uppercase", color:"var(--ink3)" }}>Areacode, Kerala</div>
                 <div style={{ fontFamily:"'Cormorant Garamond',serif", fontWeight:600, fontSize:19, color:"var(--ink)", marginTop:2 }}>Trusted Since 2009</div>
               </div>
@@ -363,14 +472,14 @@ export default function AptechElectronics() {
       </section>
 
       {/* ── PRODUCTS ── */}
-      <section id="products" style={{ background:"var(--canvas)", borderTop:"1px solid var(--line)", padding:"100px 0" }}>
+      <section id="products" className="sec" style={{ background:"var(--canvas)", borderTop:"1px solid var(--line)", padding:"100px 0" }}>
         <W>
           <div style={{ textAlign:"center", marginBottom:56 }}>
             <div className="s-tag" style={{ justifyContent:"center", display:"flex" }}>What We Carry</div>
             <h2 className="disp" style={{ fontSize:"clamp(2rem,3vw,2.8rem)", marginBottom:14 }}>Our Product Range</h2>
             <p className="body-t" style={{ maxWidth:420, margin:"0 auto" }}>Everything electronics — curated for quality, reliability, and real value.</p>
           </div>
-          <div style={{ display:"grid", gridTemplateColumns:"repeat(3,1fr)", gap:14 }}>
+          <div className="products-grid" style={{ display:"grid", gridTemplateColumns:"repeat(3,1fr)", gap:14 }}>
             {PRODUCTS.map(p => (
               <div key={p.name} className="p-card">
                 <div style={{ fontSize:26, marginBottom:16, lineHeight:1 }}>{p.icon}</div>
@@ -383,7 +492,7 @@ export default function AptechElectronics() {
       </section>
 
       {/* ── GALLERY ── */}
-      <section id="gallery" style={{ background:"var(--white)", borderTop:"1px solid var(--line)", padding:"100px 0" }}>
+      <section id="gallery" className="sec" style={{ background:"var(--white)", borderTop:"1px solid var(--line)", padding:"100px 0" }}>
         <W>
           <div style={{ display:"flex", justifyContent:"space-between", alignItems:"flex-end", marginBottom:36 }}>
             <div>
@@ -396,7 +505,7 @@ export default function AptechElectronics() {
             </div>
           </div>
 
-          <div style={{ display:"grid", gridTemplateColumns:"2fr 1fr 1fr", gap:12 }}>
+          <div className="gallery-grid" style={{ display:"grid", gridTemplateColumns:"2fr 1fr 1fr", gap:12 }}>
             {[0,1,2].map(off => {
               const item = GALLERY[(slide+off)%GALLERY.length];
               const big  = off===0;
@@ -420,13 +529,13 @@ export default function AptechElectronics() {
       </section>
 
       {/* ── CONTACT ── */}
-      <section id="contact" style={{ background:"var(--canvas)", borderTop:"1px solid var(--line)", padding:"100px 0" }}>
+      <section id="contact" className="sec" style={{ background:"var(--canvas)", borderTop:"1px solid var(--line)", padding:"100px 0" }}>
         <W>
           <div style={{ textAlign:"center", marginBottom:56 }}>
             <div className="s-tag" style={{ justifyContent:"center", display:"flex" }}>Visit Us</div>
             <h2 className="disp" style={{ fontSize:"clamp(2rem,3vw,2.8rem)" }}>Come Say Hello</h2>
           </div>
-          <div style={{ display:"grid", gridTemplateColumns:"1fr 1.5fr", gap:40 }}>
+          <div className="contact-grid" style={{ display:"grid", gridTemplateColumns:"1fr 1.5fr", gap:40 }}>
             <div>
               {[
                 ["📍","Address","Areacode, Malappuram, Kerala\nNear Jolly Hotel"],
@@ -481,12 +590,14 @@ export default function AptechElectronics() {
 
       {/* ── STICKY CTAs ── */}
       <div style={{ position:"fixed", bottom:22, right:22, zIndex:999, display:"flex", flexDirection:"column", gap:8 }}>
-        <a href="tel:+919895183365" className="s-call">📞 Call Us</a>
+        <a href="tel:+919895183365" className="s-call">
+          📞 <span className="cta-label">Call Us</span>
+        </a>
         <a href="https://wa.me/919895183365" target="_blank" rel="noreferrer" className="s-wa">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
           </svg>
-          WhatsApp
+          <span className="cta-label">WhatsApp</span>
         </a>
       </div>
     </>
