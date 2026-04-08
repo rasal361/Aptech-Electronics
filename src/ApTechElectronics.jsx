@@ -569,7 +569,7 @@ export default function AptechElectronics() {
         </W>
       </section>
 
-      {/* ── FOOTER  */}
+      {/* ── FOOTER ──   */}
 <footer style={{ background:"var(--footer-bg)", padding:"56px 40px 32px" }}>
   <div style={{ maxWidth:1080, margin:"0 auto", display:"flex", flexDirection:"column", alignItems:"center", textAlign:"center" }}>
     <div style={{ display:"flex", alignItems:"center", gap:10, marginBottom:14 }}>
