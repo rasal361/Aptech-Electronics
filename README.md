@@ -32,22 +32,3 @@ npm run dev
 
 Then open your browser at: **http://localhost:5173**
 
-### Build for Production
-
-```bash
-npm run build
-```
-
-This creates a `dist/` folder you can deploy to any static host (Netlify, Vercel, GitHub Pages, etc.).
-
-## Customisation Tips
-
-| What to change | Where |
-|---|---|
-| Phone numbers | `ApTechElectronics.jsx` → contact section & sticky CTAs |
-| WhatsApp number | `href="https://wa.me/971XXXXXXXXX"` in sticky CTA |
-| Address / hours | Contact section info array |
-| Stats (years, customers…) | Hero stats row array |
-| Product descriptions | `PRODUCTS` constant at top of file |
-| Store photos | Replace emoji placeholders with `<img src="..." />` tags |
-| Google Maps link | `href` in the map placeholder card |
