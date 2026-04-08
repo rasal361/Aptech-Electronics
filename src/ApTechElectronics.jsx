@@ -528,7 +528,7 @@ export default function AptechElectronics() {
         </W>
       </section>
 
-      {/* ── CONTACT DETAILS ── */}
+      {/* ── CONTACT ── */}
       <section id="contact" className="sec" style={{ background:"var(--canvas)", borderTop:"1px solid var(--line)", padding:"100px 0" }}>
         <W>
           <div style={{ textAlign:"center", marginBottom:56 }}>
