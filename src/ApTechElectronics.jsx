@@ -569,24 +569,43 @@ export default function AptechElectronics() {
         </W>
       </section>
 
-      {/* ── FOOTER ── */}
-      <footer style={{ background:"var(--footer-bg)", padding:"56px 40px 32px" }}>
-        <div style={{ maxWidth:1080, margin:"0 auto", display:"flex", flexDirection:"column", alignItems:"center", textAlign:"center" }}>
-          <div style={{ display:"flex", alignItems:"center", gap:10, marginBottom:14 }}>
-            <div style={{ width:32, height:32, background:"rgba(255,255,255,.1)", borderRadius:"6px", display:"flex", alignItems:"center", justifyContent:"center", fontSize:15 }}>⚡</div>
-            <div style={{ fontFamily:"'Cormorant Garamond',serif", fontWeight:600, fontSize:20, color:"var(--footer-text)", letterSpacing:"-.01em" }}>Aptech Electronics</div>
-          </div>
-          <div style={{ fontFamily:"'Jost',sans-serif", fontSize:11, fontWeight:500, letterSpacing:".1em", textTransform:"uppercase", color:"rgba(255,255,255,.3)", marginBottom:8 }}>Electronics</div>
-          <div style={{ fontFamily:"'Jost',sans-serif", fontSize:14, color:"rgba(255,255,255,.4)", fontWeight:300, marginBottom:32 }}>Your Trusted Electronics Store in Areacode</div>
-          <div style={{ borderTop:"1px solid rgba(255,255,255,.08)", width:"100%", maxWidth:480, margin:"0 auto 24px" }} />
-          <div style={{ display:"flex", gap:32, flexWrap:"wrap", justifyContent:"center", marginBottom:20 }}>
-            {["🕐 Open Daily  10 AM – 9 PM","📞 9895183365"].map(t=>(
-              <span key={t} style={{ fontFamily:"'Jost',sans-serif", fontSize:12, color:"rgba(255,255,255,.28)", fontWeight:300, letterSpacing:".04em" }}>{t}</span>
-            ))}
-          </div>
-          <div style={{ fontFamily:"'Jost',sans-serif", fontSize:11, color:"rgba(255,255,255,.18)", letterSpacing:".06em" }}>© 2026 Aptech Electronics. All rights reserved.</div>
-        </div>
-      </footer>
+      {/* ── FOOTER  */}
+<footer style={{ background:"var(--footer-bg)", padding:"56px 40px 32px" }}>
+  <div style={{ maxWidth:1080, margin:"0 auto", display:"flex", flexDirection:"column", alignItems:"center", textAlign:"center" }}>
+    <div style={{ display:"flex", alignItems:"center", gap:10, marginBottom:14 }}>
+      <div style={{ width:32, height:32, background:"rgba(255,255,255,.1)", borderRadius:"6px", display:"flex", alignItems:"center", justifyContent:"center", fontSize:15 }}>⚡</div>
+      <div style={{ fontFamily:"'Cormorant Garamond',serif", fontWeight:600, fontSize:20, color:"var(--footer-text)", letterSpacing:"-.01em" }}>Aptech Electronics</div>
+    </div>
+
+    <div style={{ fontFamily:"'Jost',sans-serif", fontSize:11, fontWeight:500, letterSpacing:".1em", textTransform:"uppercase", color:"rgba(255,255,255,.3)", marginBottom:8 }}>
+      Electronics
+    </div>
+
+    <div style={{ fontFamily:"'Jost',sans-serif", fontSize:14, color:"rgba(255,255,255,.4)", fontWeight:300, marginBottom:32 }}>
+      Your Trusted Electronics Store in Areacode
+    </div>
+
+    <div style={{ borderTop:"1px solid rgba(255,255,255,.08)", width:"100%", maxWidth:480, margin:"0 auto 24px" }} />
+
+    <div style={{ display:"flex", gap:32, flexWrap:"wrap", justifyContent:"center", marginBottom:20 }}>
+      {["🕐 Open Daily  10 AM – 9 PM","📞 9895183365"].map(t => (
+        <span key={t} style={{ fontFamily:"'Jost',sans-serif", fontSize:12, color:"rgba(255,255,255,.28)", fontWeight:300, letterSpacing:".04em" }}>
+          {t.includes("📞") ? (
+            <a href="tel:9895183365" style={{ color:"inherit", textDecoration:"none" }}>
+              {t}
+            </a>
+          ) : (
+            t
+          )}
+        </span>
+      ))}
+    </div>
+
+    <div style={{ fontFamily:"'Jost',sans-serif", fontSize:11, color:"rgba(255,255,255,.18)", letterSpacing:".06em" }}>
+      © 2026 Aptech Electronics. All rights reserved.
+    </div>
+  </div>
+</footer>
 
       {/* ── STICKY CTAs ── */}
       <div style={{ position:"fixed", bottom:22, right:22, zIndex:999, display:"flex", flexDirection:"column", gap:8 }}>
