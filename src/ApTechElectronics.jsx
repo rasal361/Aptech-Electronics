@@ -298,10 +298,10 @@ const PRODUCTS = [
 ];
 
 const GALLERY = [
-  { icon:"📱", label:"Smartphones & Tablets", sub:"100+ models in stock" },
-  { icon:"📺", label:"TV & Display",          sub:"Up to 86″ screens"   },
-  { icon:"🎧", label:"Audio Zone",            sub:"Premium sound gear"  },
-  { icon:"🔌", label:"Accessories Wall",      sub:"Every brand covered" },
+  { icon:"💡", label:"LED Lighting",        sub:"Bulbs, strips & fixtures" },
+  { icon:"🔊", label:"Audio Systems",       sub:"Speakers, amps & sound gear" },
+  { icon:"🔌", label:"Electrical Items",    sub:"Wires, plugs & accessories" },
+  { icon:"🛠️", label:"Tools & Spare Parts", sub:"Repair & maintenance essentials" },
 ];
 
 const NAV = ["Home","About","Products","Gallery","Contact"];
