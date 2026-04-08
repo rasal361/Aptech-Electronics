@@ -283,12 +283,18 @@ body{
 `;
 
 const PRODUCTS = [
-  { icon:"📱", name:"Smartphones",     desc:"Latest flagships & mid-range models from top global brands." },
-  { icon:"💻", name:"Laptops & PCs",   desc:"Curated selection for work, study, and serious gaming." },
-  { icon:"📺", name:"Smart TVs",       desc:"4K, OLED & QLED — every screen size, every budget." },
-  { icon:"🎧", name:"Audio",           desc:"Headphones, wireless earbuds & premium speaker systems." },
-  { icon:"❄️", name:"Home Appliances", desc:"Air conditioners, refrigerators & washing machines." },
-  { icon:"🔌", name:"Accessories",     desc:"Cables, chargers, cases, and every peripheral you need." },
+  { icon:"💡", name:"LED Lights",        desc:"Energy-efficient LED bulbs, strips & lighting solutions for every need." },
+  { icon:"🔊", name:"Speakers",          desc:"High-quality speakers for home, events & audio setups." },
+  { icon:"🎚️", name:"Amplifiers",        desc:"Reliable amplifiers for powerful and clear sound performance." },
+  { icon:"🚗", name:"Car Stereos",       desc:"Modern car audio systems with Bluetooth, USB & premium sound quality." },
+  { icon:"🔋", name:"Batteries",         desc:"Long-lasting batteries for all your devices and backup needs." },
+  { icon:"🌀", name:"Fans",              desc:"Ceiling, wall & pedestal fans for efficient cooling solutions." },
+  { icon:"🎤", name:"Microphones",       desc:"Wired & wireless mics for events, studios & daily use." },
+  { icon:"🔌", name:"Cables & Wiring",   desc:"Extension cables, wires, plugs & pins for safe electrical setups." },
+  { icon:"🧰", name:"Spare Parts",       desc:"Essential electronic spare parts for repairs and maintenance." },
+  { icon:"🔦", name:"Torches",           desc:"Durable and bright torches for home and outdoor use." },
+  { icon:"☕", name:"Kettles",           desc:"Electric kettles for quick and convenient boiling." },
+  { icon:"⚡", name:"Other Electronics", desc:"A wide range of useful everyday electronic items." },
 ];
 
 const GALLERY = [
@@ -402,7 +408,7 @@ export default function AptechElectronics() {
         </h1>
 
         <p className="body-t fu2" style={{ maxWidth:480, marginBottom:44 }}>
-          Quality smartphones, TVs, laptops, and home appliances — with honest pricing and genuine after-sales care since 2009.
+          Quality LED lights, speakers, amplifiers, and spare parts — with honest pricing and genuine after-sales care since 2009.
         </p>
 
         <div className="fu3 hero-btns" style={{ display:"flex", gap:12, flexWrap:"wrap", justifyContent:"center", marginBottom:80 }}>
@@ -453,13 +459,13 @@ export default function AptechElectronics() {
                 Your Neighborhood<br />Electronics Expert
               </h2>
               <p className="body-t" style={{ marginBottom:32 }}>
-                Aptech Electronics has been a trusted part of the Areacode community for over 15 years. We carry everything from flagship smartphones to home appliances, with genuine products, official warranties, and a team that actually knows their tech.
+                Aptech Electronics has been a trusted part of the community for over 15 years. We offer LED lights, speakers, amplifiers, car stereos, electrical accessories, and more all with genuine quality, honest pricing, and expert support you can rely on.
               </p>
               {[
-                ["⚡","Authorized dealer for leading brands"],
-                ["🛡️","Genuine products with official warranty"],
-                ["🔧","Expert advice & after-sales support"],
-                ["💰","Honest pricing, zero hidden charges"],
+                ["⚡","Wide range of LED lights, audio systems & electrical items"],
+  ["🛡️","Genuine products with reliable quality assurance"],
+  ["🔧","Expert advice & professional installation support"],
+  ["💰","Honest pricing with zero hidden charges"],
               ].map(([icon,text])=>(
                 <div key={text} className="feat">
                   <div className="feat-icon">{icon}</div>
