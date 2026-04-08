@@ -9,7 +9,6 @@ A clean, professional React landing page for Aptech Electronics, Sayh Mudayrah, 
 - Products grid (6 categories)
 - Gallery carousel (4 slides, dot navigation)
 - Contact section with address, hours, phone + map link
-- Footer
 - Sticky Call & WhatsApp buttons (bottom-right)
 - Full dark mode via CSS variables
 
