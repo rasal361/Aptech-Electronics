@@ -298,7 +298,7 @@ const PRODUCTS = [
 ];
 
 const GALLERY = [
-  { icon:"💡", label:"LED Lighting",        sub:"Bulbs, strips & fixtures" },
+  { icon:"💡", label:"LED Lighting",        sub:"Bulbs, strip & fixtures" },
   { icon:"🔊", label:"Audio Systems",       sub:"Speakers, amps & sound gear" },
   { icon:"🔌", label:"Electrical Items",    sub:"Wires, plugs & accessories" },
   { icon:"🛠️", label:"Tools & Spare Parts", sub:"Repair & maintenance essentials" },
