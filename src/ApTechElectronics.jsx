@@ -420,7 +420,7 @@ export default function AptechElectronics() {
         <div className="fu3 hero-stats" style={{ display:"flex", borderTop:"1px solid var(--line)", paddingTop:40, gap:0, flexWrap:"wrap", justifyContent:"center", width:"100%" }}>
           {[
             ["15+","Years in Business"],
-            ["5,000+","Happy Customers"],
+            ["10,000+","Happy Customers"],
             ["500+","Products Stocked"],
             ["10 AM – 9 PM","Open Every Day"],
           ].map(([n,l],i,a)=>(
