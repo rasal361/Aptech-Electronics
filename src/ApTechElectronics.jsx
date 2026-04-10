@@ -351,8 +351,8 @@ export default function AptechElectronics() {
         <div style={{ display:"flex", alignItems:"center", gap:10, cursor:"pointer" }} onClick={()=>go("home")}>
           <div style={{ width:32, height:32, background:"var(--ink)", borderRadius:"6px", display:"flex", alignItems:"center", justifyContent:"center", fontSize:15, color:"var(--canvas)" }}>⚡</div>
           <div>
-            <div style={{ fontFamily:"'Cormorant Garamond',serif", fontWeight:600, fontSize:18, color:"var(--ink)", letterSpacing:"-.01em", lineHeight:1 }}>Aptech</div>
-            <div style={{ fontFamily:"'Jost',sans-serif", fontSize:8, fontWeight:600, letterSpacing:".14em", textTransform:"uppercase", color:"var(--ink4)", marginTop:1 }}>Electronics</div>
+            <div style={{ fontFamily:"'Cormorant Garamond',serif", fontWeight:600, fontSize:24, color:"var(--ink)", letterSpacing:"-.01em", lineHeight:1 }}>Aptech</div>
+            <div style={{ fontFamily:"'Jost',sans-serif", fontSize:11, fontWeight:600, letterSpacing:".14em", textTransform:"uppercase", color:"var(--ink4)", marginTop:1 }}>Electronics</div>
           </div>
         </div>
 
