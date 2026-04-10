@@ -546,7 +546,7 @@ export default function AptechElectronics() {
               {[
                 ["📍","Address","Areacode, Malappuram, Kerala\nNear Jolly Hotel"],
                 ["🕐","Hours","Open Daily\n10:00 AM – 9:00 PM"],
-                ["📞","Phone","Mobile: 9895183365"],
+                ["📞","Phone",<a href="tel:+919895183365" style={{color:"var(--ink3)",textDecoration:"none"}}>Mobile: 9895183365</a>],
               ].map(([icon,title,text])=>(
                 <div key={title} className="i-row">
                   <div style={{ width:38, height:38, borderRadius:"8px", border:"1px solid var(--line)", display:"flex", alignItems:"center", justifyContent:"center", fontSize:16, flexShrink:0, background:"var(--canvas2)" }}>{icon}</div>
