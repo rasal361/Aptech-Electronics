@@ -13,10 +13,6 @@ A clean, professional React landing page for Aptech Electronics, Sayh Mudayrah, 
 - Full dark mode via CSS variables
 
 ## How to Run
-
-### Prerequisites
-- **Node.js** v18 or higher — download from https://nodejs.org
-
 ### Steps
 
 ```bash
