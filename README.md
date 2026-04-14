@@ -12,7 +12,7 @@ A clean, professional React landing page for Aptech Electronics, Sayh Mudayrah, 
 - Sticky Call & WhatsApp buttons (bottom-right)
 - Full dark mode via CSS variables
 
-## How to Run
+
 ### Steps
 
 ```bash
