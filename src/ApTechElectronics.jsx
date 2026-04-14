@@ -442,13 +442,13 @@ export default function AptechElectronics() {
                 <div style={{ fontSize:72, lineHeight:1 }}>🏪</div>
                 <div style={{ marginTop:24, textAlign:"center", padding:"0 24px" }}>
                   <div style={{ fontFamily:"'Cormorant Garamond',serif", fontWeight:600, fontSize:16, color:"var(--ink)" }}>Aptech Electronics</div>
-                  <div style={{ fontFamily:"'Jost',sans-serif", fontSize:12, color:"var(--ink3)", marginTop:4 }}>Areacode · Est. 2009</div>
+                  <div style={{ fontFamily:"'Jost',sans-serif", fontSize:12, color:"var(--ink3)", marginTop:4 }}>Areacode · Est. 2006</div>
                 </div>
               </div>
               {/* Floating tag */}
               <div className="about-float" style={{ position:"absolute", bottom:-18, right:-18, background:"var(--card-bg)", border:"1px solid var(--line)", borderRadius:"10px", padding:"12px 20px", boxShadow:"0 8px 32px var(--shadow)" }}>
                 <div style={{ fontFamily:"'Jost',sans-serif", fontSize:11, fontWeight:600, letterSpacing:".1em", textTransform:"uppercase", color:"var(--ink3)" }}>Areacode, Kerala</div>
-                <div style={{ fontFamily:"'Cormorant Garamond',serif", fontWeight:600, fontSize:19, color:"var(--ink)", marginTop:2 }}>Trusted Since 2009</div>
+                <div style={{ fontFamily:"'Cormorant Garamond',serif", fontWeight:600, fontSize:19, color:"var(--ink)", marginTop:2 }}>Trusted Since 2006</div>
               </div>
             </div>
 
@@ -459,7 +459,7 @@ export default function AptechElectronics() {
                 Your Neighborhood<br />Electronics Expert
               </h2>
               <p className="body-t" style={{ marginBottom:32 }}>
-                Aptech Electronics has been a trusted part of the community for over 15 years. We offer LED lights, speakers, amplifiers, car stereos, electrical accessories, and more all with genuine quality, honest pricing, and expert support you can rely on.
+                Aptech Electronics has been a trusted part of the community for over 20 years. We offer LED lights, speakers, amplifiers, car stereos, electrical accessories, and more all with genuine quality, honest pricing, and expert support you can rely on.
               </p>
               {[
                 ["⚡","Wide range of LED lights, audio systems & electrical items"],
