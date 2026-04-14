@@ -408,7 +408,7 @@ export default function AptechElectronics() {
         </h1>
 
         <p className="body-t fu2" style={{ maxWidth:480, marginBottom:44 }}>
-          Quality LED lights, speakers, amplifiers, and spare parts — with honest pricing and genuine after-sales care since 2009.
+          Quality LED lights, speakers, amplifiers, and spare parts — with honest pricing and genuine after-sales care since 2006.
         </p>
 
         <div className="fu3 hero-btns" style={{ display:"flex", gap:12, flexWrap:"wrap", justifyContent:"center", marginBottom:80 }}>
@@ -419,7 +419,7 @@ export default function AptechElectronics() {
         {/* Stats row */}
         <div className="fu3 hero-stats" style={{ display:"flex", borderTop:"1px solid var(--line)", paddingTop:40, gap:0, flexWrap:"wrap", justifyContent:"center", width:"100%" }}>
           {[
-            ["15+","Years in Business"],
+            ["20+","Years in Business"],
             ["10,000+","Happy Customers"],
             ["500+","Products Stocked"],
             ["10 AM – 9 PM","Open Every Day"],
