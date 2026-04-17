@@ -442,7 +442,7 @@ export default function AptechElectronics() {
                 <div style={{ fontSize:72, lineHeight:1 }}>🏪</div>
                 <div style={{ marginTop:24, textAlign:"center", padding:"0 24px" }}>
                   <div style={{ fontFamily:"'Cormorant Garamond',serif", fontWeight:600, fontSize:16, color:"var(--ink)" }}>Aptech Electronics</div>
-                  <div style={{ fontFamily:"'Jost',sans-serif", fontSize:12, color:"var(--ink3)", marginTop:4 }}>Areacode · Est. 2006</div>
+                  <div style={{ fontFamily:"'Jost',sans-serif", fontSize:12, color:"var(--ink3)", marginTop:4 }}>Areacode · Est. 2005</div>
                 </div>
               </div>
               {/* Floating tag */}
