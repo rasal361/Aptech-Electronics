@@ -597,7 +597,7 @@ export default function AptechElectronics() {
       {["🕐 Open Daily  10 AM – 9 PM","📞 9895183365"].map(t => (
         <span key={t} style={{ fontFamily:"'Jost',sans-serif", fontSize:12, color:"rgba(255,255,255,.28)", fontWeight:300, letterSpacing:".04em" }}>
           {t.includes("📞") ? (
-            <a href="tel:9895183365" style={{ color:"inherit", textDecoration:"none" }}>
+            <a href="tel:+919895183365" style={{ color:"inherit", textDecoration:"none" }}>
               {t}
             </a>
           ) : (
