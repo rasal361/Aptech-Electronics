@@ -1,6 +1,6 @@
 # Aptech Electronics — Landing Page 
 
-A clean, professional React landing page for Aptech Electronics, Sayh Mudayrah, Ajman, UAE.
+A clean, professional React landing page for Aptech Electronics, 
 
 ## Features
 - Fixed navbar with dark/light mode toggle
