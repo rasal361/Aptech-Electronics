@@ -1,6 +1,6 @@
 # Aptech Electronics — Landing Page 
 
-A clean, professional React landing page for Aptech Electronics, 
+A clean, professional React landing page for Aptech Electronics, Areacode, Kerala 
 
 ## Features
 - Fixed navbar with dark/light mode toggle
